@@ -1,0 +1,53 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">DNSDumpster Report</h4> 
+        </div>
+        <div class="content">
+            <div class="content row">
+                <p class="category">DNS Data</p>
+                <pre><code>{{ results['dns_data'] }}</code></pre>
+            </div>
+
+            <div class="content row">
+            {% if 'headers' in results %}
+                <br />
+                <p class="category">Page Headers</p>
+                <div class="labeled_content">
+                    <pre><code>{{ results['headers'] }}</code></pre>
+                </div>
+            {% endif %}
+            </div>
+
+            <div class="content row">
+            {% if 'links' in results %}
+                <br />
+                <p class="category">Page Links</p>
+                <div class="labeled_content">
+                    <pre><code>{{ results['links'] }}</code></pre>
+                </div>
+            {% endif %}
+            </div>
+
+            <div class="content row">
+            {% if 'reverse_dns' in results %}
+                <p class="category">Reverse DNS</p>
+                <div class="labeled_content">
+                    <pre><code>{{ results['reverse_dns'] }}</code></pre>
+                </div>
+            {% endif %}
+            </div>
+
+            <div class="content row">
+                {% if 'support_files' in analysis %}
+                    <p class="category">Support Files</p>
+                    {% if name in analysis.support_files %}
+                        {% for support_file in analysis.support_files[name] %}
+                            <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" target=”_blank” rel=”noopener noreferrer”><button>{{ support_file[0] }}</button></a>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

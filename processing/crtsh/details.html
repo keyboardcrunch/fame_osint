@@ -1,0 +1,27 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">crt.sh Certificate Search</h4> 
+        </div>
+        <div class="content">
+            <div class="content row">
+                <p class="category">Top {{ results['cert_count'] }} Results</p>
+                {% for cert in results['top_certs'] %}
+                    <p><a href="https://crt.sh/?id={{cert['id']}}">{{ cert['id'] }}</a> &nbsp|&nbsp {{ cert['entry_timestamp'] }} &nbsp|&nbsp {{ cert['name_value'] }}<br />
+                        {{ cert['issuer_name'] }}
+                    </p>
+                {% endfor %}
+            </div>
+            <div class="content row">
+                {% if 'support_files' in analysis %}
+                    <p class="category">Support Files</p>
+                    {% if name in analysis.support_files %}
+                        {% for support_file in analysis.support_files[name] %}
+                            <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" target=”_blank” rel=”noopener noreferrer”><button>{{ support_file[0] }}</button></a>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
