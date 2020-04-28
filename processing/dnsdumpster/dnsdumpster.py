@@ -46,7 +46,7 @@ class DnsDumpster(ProcessingModule):
         {
             'name': 'save_json',
             'type': 'bool',
-            'default': True,
+            'default': False,
             'description': 'Save DNS lookup data to a json file.'
         },
     ]
