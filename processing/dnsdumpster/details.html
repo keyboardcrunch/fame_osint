@@ -9,34 +9,32 @@
                 <pre><code>{{ results['dns_data'] }}</code></pre>
             </div>
 
-            <div class="content row">
             {% if 'headers' in results %}
-                <br />
-                <p class="category">Page Headers</p>
-                <div class="labeled_content">
-                    <pre><code>{{ results['headers'] }}</code></pre>
+                <div class="content row">
+                    <p class="category">Page Headers</p>
+                    <div class="labeled_content">
+                        <pre><code>{{ results['headers'] }}</code></pre>
+                    </div>
                 </div>
             {% endif %}
-            </div>
 
-            <div class="content row">
             {% if 'links' in results %}
-                <br />
-                <p class="category">Page Links</p>
-                <div class="labeled_content">
-                    <pre><code>{{ results['links'] }}</code></pre>
+                <div class="content row">
+                    <p class="category">Page Links</p>
+                    <div class="labeled_content">
+                        <pre><code>{{ results['links'] }}</code></pre>
+                    </div>
                 </div>
             {% endif %}
-            </div>
-
-            <div class="content row">
+            
             {% if 'reverse_dns' in results %}
-                <p class="category">Reverse DNS</p>
-                <div class="labeled_content">
-                    <pre><code>{{ results['reverse_dns'] }}</code></pre>
+                <div class="content row">
+                    <p class="category">Reverse DNS</p>
+                    <div class="labeled_content">
+                        <pre><code>{{ results['reverse_dns'] }}</code></pre>
+                    </div>
                 </div>
             {% endif %}
-            </div>
 
             <div class="content row">
                 {% if 'support_files' in analysis %}
