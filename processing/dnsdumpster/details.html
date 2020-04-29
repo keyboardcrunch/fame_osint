@@ -5,43 +5,68 @@
         </div>
         <div class="content">
             <div class="content row">
-                <p class="category">DNS Data</p>
-                <pre><code>{{ results['dns_data'] }}</code></pre>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#dns" class="nav-link active" data-toggle="tab">DNS</a>
+                    </li>
+
+                    {% if 'headers' in results %}
+                    <li class="nav-item">
+                        <a href="#headers" class="nav-link active" data-toggle="tab">Headers</a>
+                    </li>
+                    {% endif %}
+
+                    {% if 'links' in results %}
+                    <li class="nav-item">
+                        <a href="#links" class="nav-link active" data-toggle="tab">Links</a>
+                    </li>
+                    {% endif %}
+
+                    {% if 'reverse_dns' in results %}
+                    <li class="nav-item">
+                        <a href="#reversedns" class="nav-link active" data-toggle="tab">Reverse DNS</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="dns">
+                        <div class="labeled_content">
+                            <pre><code>{{ results['dns_data'] }}</code></pre>
+                        </div>
+                    </div>
+
+                    {% if 'headers' in results %}
+                    <div class="tab-pane fade" id="headers">
+                        <div class="labeled_content">
+                            <pre><code>{{ results['headers'] }}</code></pre>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if 'links' in results %}
+                    <div class="tab-pane fade" id="links">
+                        <div class="labeled_content">
+                            <pre><code>{{ results['links'] }}</code></pre>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if 'reverse_dns' in results %}
+                    <div class="tab-pane fade" id="reversedns">
+                        <div class="labeled_content">
+                            <pre><code>{{ results['reverse_dns'] }}</code></pre>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
-
-            {% if 'headers' in results %}
-                <div class="content row">
-                    <p class="category">Page Headers</p>
-                    <div class="labeled_content">
-                        <pre><code>{{ results['headers'] }}</code></pre>
-                    </div>
-                </div>
-            {% endif %}
-
-            {% if 'links' in results %}
-                <div class="content row">
-                    <p class="category">Page Links</p>
-                    <div class="labeled_content">
-                        <pre><code>{{ results['links'] }}</code></pre>
-                    </div>
-                </div>
-            {% endif %}
-            
-            {% if 'reverse_dns' in results %}
-                <div class="content row">
-                    <p class="category">Reverse DNS</p>
-                    <div class="labeled_content">
-                        <pre><code>{{ results['reverse_dns'] }}</code></pre>
-                    </div>
-                </div>
-            {% endif %}
 
             <div class="content row">
                 {% if 'support_files' in analysis %}
                     <p class="category">Support Files</p>
                     {% if name in analysis.support_files %}
                         {% for support_file in analysis.support_files[name] %}
-                            <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" target=”_blank” rel=”noopener noreferrer”><button>{{ support_file[0] }}</button></a>
+                            <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" target=”_blank” rel=”noopener noreferrer”>{{ support_file[0] }}</a>
                         {% endfor %}
                     {% endif %}
                 {% endif %}
