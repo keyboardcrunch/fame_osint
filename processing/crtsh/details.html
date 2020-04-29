@@ -5,27 +5,50 @@
         </div>
         <div class="content">
             <div class="content row">
-                <p class="category">Top {{ results['cert_count'] }} Results</p>
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Timestamp</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Issuer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for cert in results['top_certs'] %}
-                        <tr>
-                            <td><a href="https://crt.sh/?id={{cert['id']}}">{{ cert['id'] }}</a></td>
-                            <td>{{ cert['entry_timestamp'] }}</td>
-                            <td>{{ cert['name_value'] }}</td>
-                            <td>{{ cert['issuer_name'] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#certs" class="nav-link active" data-toggle="tab">Certs</a>
+                    </li>
+
+                    {% if 'host_list' in results %}
+                    <li class="nav-item">
+                        <a href="#hosts" class="nav-link active" data-toggle="tab">Hosts</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <div class="tab-pane fade show active" id="certs" role="tabpanel">
+                    <p class="category">Top {{ results['cert_count'] }} Results</p>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Timestamp</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Issuer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cert in results['top_certs'] %}
+                            <tr>
+                                <td><a href="https://crt.sh/?id={{cert['id']}}">{{ cert['id'] }}</a></td>
+                                <td>{{ cert['entry_timestamp'] }}</td>
+                                <td>{{ cert['name_value'] }}</td>
+                                <td>{{ cert['issuer_name'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% if 'host_list' in results %}
+                <div class="tab-pane fade" id="hosts" role="tabpanel">
+                    <div class="labeled_content">
+                        <pre><code>{{ results['host_list'] }}</code></pre>
+                    </div>
+                </div>
+                {% endif %}
+                
             </div>
 
             <div class="content row">
