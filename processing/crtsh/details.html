@@ -6,18 +6,34 @@
         <div class="content">
             <div class="content row">
                 <p class="category">Top {{ results['cert_count'] }} Results</p>
-                {% for cert in results['top_certs'] %}
-                    <p><a href="https://crt.sh/?id={{cert['id']}}">{{ cert['id'] }}</a> &nbsp|&nbsp {{ cert['entry_timestamp'] }} &nbsp|&nbsp {{ cert['name_value'] }}<br />
-                        {{ cert['issuer_name'] }}
-                    </p>
-                {% endfor %}
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Timestamp</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Issuer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cert in results['top_certs'] %}
+                        <tr>
+                            <td><a href="https://crt.sh/?id={{cert['id']}}">{{ cert['id'] }}</a></td>
+                            <td>{{ cert['entry_timestamp'] }}</td>
+                            <td>{{ cert['name_value'] }}</td>
+                            <td>{{ cert['issuer_name'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
+
             <div class="content row">
                 {% if 'support_files' in analysis %}
                     <p class="category">Support Files</p>
                     {% if name in analysis.support_files %}
                         {% for support_file in analysis.support_files[name] %}
-                            <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" target=”_blank” rel=”noopener noreferrer”><button>{{ support_file[0] }}</button></a>
+                        <a href="{{url_for('AnalysesView:download_support_file', id=analysis._id, module=name, filename=support_file[1])}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" target=”_blank” rel=”noopener noreferrer”>{{ support_file[0] }}</a>
                         {% endfor %}
                     {% endif %}
                 {% endif %}
