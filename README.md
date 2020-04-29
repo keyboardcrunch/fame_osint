@@ -1,5 +1,5 @@
 # fame_osint
-OSINT modules for [FAME](https://github.com/certsocietegenerale/fame/issues) by CERT Société Générale
+OSINT modules for [FAME](https://github.com/certsocietegenerale/fame/) by CERT Société Générale
 
 # Installation
 
@@ -7,7 +7,7 @@ Navigate to Cofiguration, scroll down to Module Repositories and click Add Repos
 
 # Modules
 
-## Live (possibly in progress)
+## Live
 
 * DNS Dumpster (HackerTarget API)
 * Crt.sh Query
@@ -15,5 +15,7 @@ Navigate to Cofiguration, scroll down to Module Repositories and click Add Repos
 ## Planned
 
 * URLScan.io query and submit
-* Form parsers
-* PhishingKit brute-finding
+* DOM parsers (links, forms, resources)
+* PhishingKit identification (httrack detection, kit zip path, related campaigns)
+* VirusTotal Intel (alternative to community module)
+* Generic Recon module to harvest forms, emails, crypto-currency addresses
