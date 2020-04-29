@@ -101,13 +101,13 @@ class Crtsh(ProcessingModule):
                 for e in entry:
                     values.append(e)
             dedupe = set(values)
-            preview = []
+            preview = ""
             try:
                 with open(host_save, "w") as hf:
                     for item in list(dedupe):
                         host = "{}\r\n".format(item)
                         hf.write(host)
-                        preview.append(host)
+                        preview += host
                     hf.close()
                 self.add_support_file('Host List', host_save)
                 self.results['host_list'] = preview
