@@ -5,7 +5,7 @@
         </div>
         <div class="content">
             <div class="content row">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a href="#dns" class="nav-link active" data-toggle="tab">DNS</a>
                     </li>
@@ -28,31 +28,36 @@
                     </li>
                     {% endif %}
                 </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="dns">
-                        <div class="labeled_content">
-                            <pre><code>{{ results['dns_data'] }}</code></pre>
-                        </div>
-                    </div>
 
-                    {% if 'headers' in results %}
-                    <div class="tab-pane fade" id="headers">
+                <div class="tab-pane fade show active" id="dns" role="tabpanel">
+                    <div class="labeled_content">
+                        <pre><code>{{ results['dns_data'] }}</code></pre>
+                    </div>
+                </div>
+
+                {% if 'headers' in results %}
+                <div class="tab-pane fade" id="headers" role="tabpanel">
+                    <div class="labeled_content">
                         <pre><code>{{ results['headers'] }}</code></pre>
                     </div>
-                    {% endif %}
+                </div>
+                {% endif %}
 
-                    {% if 'links' in results %}
-                    <div class="tab-pane fade" id="links">
+                {% if 'links' in results %}
+                <div class="tab-pane fade" id="links" role="tabpanel">
+                    <div class="labeled_content">
                         <pre><code>{{ results['links'] }}</code></pre>
                     </div>
-                    {% endif %}
+                </div>
+                {% endif %}
 
-                    {% if 'reverse_dns' in results %}
-                    <div class="tab-pane fade" id="reversedns">
+                {% if 'reverse_dns' in results %}
+                <div class="tab-pane fade" id="reversedns" role="tabpanel">
+                    <div class="labeled_content">
                         <pre><code>{{ results['reverse_dns'] }}</code></pre>
                     </div>
-                    {% endif %}
                 </div>
+                {% endif %}
             </div>
 
             <div class="content row">
