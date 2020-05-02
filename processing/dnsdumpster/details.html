@@ -32,14 +32,14 @@
                 <div class="tab-content clearfix">
                     <div class="tab-pane fade active in" id="dns" role="tabpanel">
                         <div class="labeled_content">
-                            <pre><code>{{ results['dns_data'] }}</code></pre>
+                            <pre><code style="max-height: 800px;">{{ results['dns_data'] }}</code></pre>
                         </div>
                     </div>
 
                     {% if 'headers' in results %}
                     <div class="tab-pane fade" id="headers" role="tabpanel">
                         <div class="labeled_content">
-                            <pre><code>{{ results['headers'] }}</code></pre>
+                            <pre><code style="max-height: 800px;">{{ results['headers'] }}</code></pre>
                         </div>
                     </div>
                     {% endif %}
@@ -47,7 +47,7 @@
                     {% if 'links' in results %}
                     <div class="tab-pane fade" id="links" role="tabpanel">
                         <div class="labeled_content">
-                            <pre><code>{{ results['links'] }}</code></pre>
+                            <pre><code style="max-height: 800px;">{{ results['links'] }}</code></pre>
                         </div>
                     </div>
                     {% endif %}
@@ -55,7 +55,7 @@
                     {% if 'reverse_dns' in results %}
                     <div class="tab-pane fade" id="reversedns" role="tabpanel">
                         <div class="labeled_content">
-                            <pre><code>{{ results['reverse_dns'] }}</code></pre>
+                            <pre><code style="max-height: 800px;">{{ results['reverse_dns'] }}</code></pre>
                         </div>
                     </div>
                     {% endif %}
