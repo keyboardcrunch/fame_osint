@@ -1,0 +1,55 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">PageParser</h4> 
+        </div>
+        <div class="content">
+            <div class="content row">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#content" class="nav-link active" data-toggle="tab">Content</a>
+                    </li>
+
+                    {% if 'forms' in results %}
+                    <li class="nav-item">
+                        <a href="#forms" class="nav-link active" data-toggle="tab">Forms</a>
+                    </li>
+                    {% endif %}
+
+                    {% if 'links' in results %}
+                    <li class="nav-item">
+                        <a href="#links" class="nav-link active" data-toggle="tab">Links</a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <div class="tab-content clearfix">
+                    <div class="tab-pane fade active in" id="content" role="tabpanel">
+                        <div class="labeled_content">
+                            <pre><code style="max-height: 800px;">{{ results['source'] }}</code></pre>
+                        </div>
+                    </div>
+
+                    {% if 'forms' in results %}
+                    <!-- We need to show form['action'] and form['content'] -->
+                    <div class="tab-pane fade" id="forms" role="tabpanel">
+                        <div class="labeled_content">
+                            {% for form in results['forms'] %}
+                                <pre><code style="max-height: 800px;">{{ form }}</code></pre>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if 'links' in results %}
+                    <div class="tab-pane fade" id="links" role="tabpanel">
+                        <div class="labeled_content">
+                            <pre><code style="max-height: 800px;">{{ results['links'] }}</code></pre>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
