@@ -15,7 +15,8 @@ Navigate to Cofiguration, scroll down to Module Repositories and click Add Repos
 ## Planned
 
 * URLScan.io query and submit
-* DOM parsers (links, forms, resources)
+* ~~DOM parsers (links, forms, resources)~~
 * PhishingKit identification (httrack detection, kit zip path, related campaigns)
 * VirusTotal Intel (alternative to community module)
-* Generic Recon module to harvest forms, emails, crypto-currency addresses
+* Generic Recon module to harvest emails, crypto-currency addresses, twitter accounts
+* Phish tagging of Banking phish using scoring system
