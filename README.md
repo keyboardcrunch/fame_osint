@@ -9,8 +9,9 @@ Navigate to Cofiguration, scroll down to Module Repositories and click Add Repos
 
 ## Live
 
-* DNS Dumpster (HackerTarget API)
-* Crt.sh Query
+* DNS Dumpster (HackerTarget API) processing module
+* Crt.sh processing module
+* Microsoft Teams reporting module
 
 ## Planned
 
