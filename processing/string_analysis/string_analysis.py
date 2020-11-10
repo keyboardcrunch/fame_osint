@@ -33,8 +33,9 @@ class StringAnalysis(ProcessingModule):
         results_dir = os.path.join(self.outdir, "output")
 
         self.run_strings(os.path.basename(target))
+        results_file = os.path.join(results_dir, "results.txt")
 
-        with open(os.path.join(results_dir, "results.txt"), "r") as results_text:
-            self.results['strings'] = results_text.readlines()
+        results_text = open(results_file, 'r').read()
+        self.results['strings'] = results_text
         
-        return self.results['strings']
+        return True
