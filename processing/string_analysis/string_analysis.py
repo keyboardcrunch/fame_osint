@@ -16,7 +16,7 @@ class StringAnalysis(ProcessingModule):
     def each(self, target):
         self.results = {}
 
-        results_text = subprocess.check_output('strings', '-a', '-w', target)
+        results_text = subprocess.check_output(['strings', '-a', '-w', target])
         self.results['strings'] = results_text
         
         return True
