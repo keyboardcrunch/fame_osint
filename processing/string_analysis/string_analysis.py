@@ -15,8 +15,8 @@ class StringAnalysis(ProcessingModule):
 
     def each(self, target):
         self.results = {}
-
-        results_text = subprocess.check_output(['strings', '-a', '-w', target])
+        command = "strings -a -w %s" % target
+        results_text = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
         self.results['strings'] = results_text
         
         return True
