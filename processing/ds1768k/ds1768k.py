@@ -41,4 +41,5 @@ class ds1768k(ProcessingModule):
             if line_count > 1:
                 self.results['beacon'] = self.results['beacon'] + "\r\n" + beacon_data
 
-        return len(self.results['beacon']) > 0
+        if len(self.results['beacon']) > 0:
+            return True
