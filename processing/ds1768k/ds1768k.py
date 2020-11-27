@@ -1,10 +1,11 @@
 import os
+from fame.common.utils import tempdir
 from fame.core.module import ProcessingModule
 from fame.common.exceptions import ModuleInitializationError
 from ..docker_utils import HAVE_DOCKER, docker_client, temp_volume
 
 
-class ds1768k(ProcessingModule):
+class DS1768k(ProcessingModule):
     name = "ds1768k"
     description = "Dump and decode Cobalt Strike beacons."
     acts_on = ["exe", "dll"]
@@ -15,7 +16,7 @@ class ds1768k(ProcessingModule):
 
         return True
 
-    def run_1768(self, target):
+    def run_1768k(self, target):
         args = "/data/{} --output /data/output/results.txt".format(target)
 
         return docker_client.containers.run(
@@ -34,7 +35,7 @@ class ds1768k(ProcessingModule):
         self.outdir = temp_volume(target)
         results_dir = os.path.join(self.outdir, "output")
 
-        self.run_1768(os.path.basename(target))
+        self.run_1768k(os.path.basename(target))
 
         with open(os.path.join(results_dir, 'results.txt')) as beacon_data:
             line_count = sum(1 for _ in beacon_data)
