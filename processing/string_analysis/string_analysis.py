@@ -8,7 +8,9 @@ from fame.common.exceptions import ModuleInitializationError, ModuleExecutionErr
 class StringAnalysis(ProcessingModule):
     name = "string_analysis"
     description = "Strings file analysis."
-    acts_on = ["executable","pdf"]
+    acts_on = ["executable","pdf","excel", "xls", "xlsm"]
+    
+    triggered_by = "!"  # manual use only 
 
     def initialize(self):
         pass
